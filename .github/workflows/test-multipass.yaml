@@ -1,0 +1,20 @@
+name: Test
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install multipass snap
+        run: sudo snap install multipass
+
+      - name: Check status
+        run: sudo snap info multipass
+
+      - name: Get logs
+        run: journalctl --unit snap.multipass*
+
+      - name: Run multipass find
+        run: multipass find
