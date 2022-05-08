@@ -1,0 +1,9 @@
+before_install:
+  - sudo snap install multipass
+  - sudo snap start multipass
+  - sleep 10
+  - sudo snap services
+  - sudo snap info multipass
+  - sudo multipass launch
+  - sudo multipass launch -n testvm --mem 4 --cpus 4 --disk 20G
+  - sudo multipass execute testm -- bash -c "echo 'test'"

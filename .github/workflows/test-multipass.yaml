@@ -16,5 +16,26 @@ jobs:
       - name: Get logs
         run: journalctl --unit snap.multipass*
 
+      - name: Check for socket
+        run: ls -lah /var/snap/multipass/common/
+
+      - name: Start snap
+        run: sudo snap start multipass
+
+      - name: Check status
+        run: sudo sudo snap info multipass
+
+      - name: Restart snap
+        run: sudo snap services
+
+      - name: Sleep
+        run: sleep 20
+
+      - name: Check status
+        run: sudo sudo snap info multipass
+
+      - name: Get logs
+        run: journalctl --unit snap.multipass*
+
       - name: Run multipass find
         run: multipass find
